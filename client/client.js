@@ -32,18 +32,18 @@ form.addEventListener('submit', (event)=> {
         }
     })  .then(response => response.json())
         .then(createdMew => {
-            console.log(createdMew);
             form.reset();
             form.style.display = '';
-            loadingElement.style.display = 'none';
+            listAllMews();
         });
 });
 
 function listAllMews(){
+    mewsElement.innerHTML = '';
     fetch(API_URL)
         .then(response => response.json())
         .then(mews => {
-            console.log(mews);
+            mews.reverse();
             mews.forEach(mew => {
                 const div = document.createElement('div');
 
@@ -52,6 +52,16 @@ function listAllMews(){
 
                 const contents = document.createElement('p');
                 contents.textContent = mew.content;
+
+                const date = document.createElement('small');
+                date.textContent = new Date(mew.created);
+
+                div.appendChild(header);
+                div.appendChild(contents);
+                div.appendChild(date);
+
+                mewsElement.appendChild(div);
             });
+            loadingElement.style.display = 'none';
         });
 }
