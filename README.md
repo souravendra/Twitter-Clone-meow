@@ -1,1 +1,1 @@
-# Twitter-Clone-meow
+# Twitter Clone application using Nodejs and MongoDB
