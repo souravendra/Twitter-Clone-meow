@@ -1,5 +1,5 @@
 # Twitter Clone application using Nodejs and MongoDB
-features:
+Features:
 - Bad language filter
 - Rate limiter
 - Simple one-page app
